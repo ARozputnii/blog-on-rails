@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-
+<%= link_to 'Создать пост', new_post_path, class: "btn btn-success btn-lg" %>
 <h2>Посты</h2> <br />
     <% @posts.each do |post| %>
 
@@ -30,4 +30,4 @@
 
 <br>
 
-<%= link_to 'Создать пост', new_post_path, class: "btn btn-success btn-lg" %>
+
