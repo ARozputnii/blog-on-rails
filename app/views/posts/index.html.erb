@@ -4,26 +4,33 @@
     <% @posts.each do |post| %>
 
 <table>
-
-  <thead>
-    <tr>
-      Author:  <b><%= post.user.email %></b> <br />
-    </tr>
-  </thead>
-
   <tbody>
       <tr>
-      
-
-        Title: <b><%= post.title %></b> <br />
-        <%= post.content %> <br />
+    
+        <h4><b><%= post.title %></b> </h4>
+        <%= image_tag post.image.url(:thumb), class: 'img-thumbnail' if post.image? %> 
+     <br />
+     <br />
+     <br />
         <%= link_to ' Показать', post , class: "btn btn-default btn-sm" %>
         <%= link_to ' Редактировать', edit_post_path(post) , class: "btn btn-default btn-sm" %>
         <%= link_to ' Удалить', post, method: :delete, data: { confirm: 'Вы уверены?' } , class: "btn btn-default btn-sm"%> <br />
 
-        Создано: <%= post.created_at %> <br />
+        <div class="container">
+          <div align="">
+            <smail>
+                Автор: <%= post.user.email %> |
+              <time> <%= post.created_at.to_date.strftime("%d %B, %Y") %> </time>
+              <br />
+            </smail>
+          </div>
+        </div>
+
       </tr>
-        _______________________________
+        ___________________________________
+        <br />
+        <br />
+        <br />
     <% end %>
   </tbody>
 </table>

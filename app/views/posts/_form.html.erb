@@ -1,4 +1,4 @@
-<%= form_with(model: post, local: true) do |form| %>
+<%= form_for @post, html: {multipart: true} do |form| %>
   <% if post.errors.any? %>
     <div class="alert alert-danger">
       <h5> <%=t('common.errors') %> </h5>
@@ -24,6 +24,10 @@
   </div>
 
 
+  <div class="field">
+  
+    <%= form.file_field :image  %>
+  </div>
 
   <div class="actions">
     <%= form.submit "Сохранить", class: "btn btn-success" %>

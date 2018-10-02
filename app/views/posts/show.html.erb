@@ -1,20 +1,35 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Заголовок: </strong>
-  <%= @post.title %>
-</p>
+<article class="post">
+	<section class="post-head">
+		<h1> <%= @post.title %> </h1>
+		
+	</section>
+	<section>
 
-<p>
-  <strong>Текст: </strong>
-  <%= @post.content %>
-</p>
+		<%= image_tag @post.image.url(:large), class: 'img-show' if @post.image? %> 
+		
+		<br />
+		<br />
 
-<p>
-  <em> Пользователь: </em>
-  <%= @post.user.email %>
-</p>
-
-<%= link_to 'Редактировать', edit_post_path(@post), class: "btn btn-default btn-sm" %> 
-<%= link_to 'Назад', posts_path ,class: "btn btn-default btn-sm"%>
-
+		<div class="container">
+      <div align="justify">
+		 <%= @post.content %>
+			</div>
+		</div>
+		 <small>
+		 	<div class="container">
+      	<div align="right">
+		 			<p> Автор: <%= @post.user.email %> </p>
+					<time> <%= @post.created_at.to_date.strftime("%d %B, %Y") %> </time>
+					<br />
+				</div>
+			</div>
+			<br />
+			<%= link_to 'Редактировать', edit_post_path(@post), class: "btn btn-default btn-sm" %> 
+			|
+			<%= link_to ' Удалить', post_path(@post), method: :delete, data: { confirm: 'Вы уверены?' } , class: "btn btn-default btn-sm"%>
+			|
+			<%= link_to 'Назад', posts_path ,class: "btn btn-default btn-sm"%>
+		</small>
+	</section>
+</article>
