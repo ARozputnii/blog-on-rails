@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
-<%= link_to 'Создать пост', new_post_path, class: "btn btn-success btn-lg" %>
-<h2>Посты</h2> <br />
+<%= link_to 'Создать запись', new_post_path, class: "btn btn-success btn-lg" %>
+<h2>Записи</h2> <br />
     <% @posts.each do |post| %>
 
 <table>
@@ -19,7 +19,7 @@
         <%= post.content %> <br />
         <%= link_to ' Показать', post , class: "btn btn-default btn-sm" %>
         <%= link_to ' Редактировать', edit_post_path(post) , class: "btn btn-default btn-sm" %>
-        <%= link_to ' Удалить', post, method: :delete, data: { confirm: 'Are you sure?' } , class: "btn btn-default btn-sm"%> <br />
+        <%= link_to ' Удалить', post, method: :delete, data: { confirm: 'Вы уверены?' } , class: "btn btn-default btn-sm"%> <br />
 
         Создано: <%= post.created_at %> <br />
       </tr>

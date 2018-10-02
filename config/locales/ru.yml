@@ -1,0 +1,6 @@
+ru: 
+  common:
+    errors: 'Ошибка'
+  posts:
+    new:
+      title: 'Новая запись'
