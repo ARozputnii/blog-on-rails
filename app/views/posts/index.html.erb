@@ -1,6 +1,6 @@
-<p id="notice"><%= notice %></p>
-<%= link_to 'Создать запись', new_post_path, class: "btn btn-success btn-lg" %>
-<h2>Записи</h2> <br />
+<p align="center">
+  <%= link_to 'Создать запись', new_post_path, class: "btn btn-default btn-lg btn-block" %> 
+  </p>
     <% @posts.each do |post| %>
 
 <table>
@@ -8,29 +8,34 @@
       <tr>
     
         <h4><b><%= post.title %></b> </h4>
-        <%= image_tag post.image.url(:thumb), class: 'img-thumbnail' if post.image? %> 
-     <br />
-     <br />
-     <br />
-        <%= link_to ' Показать', post , class: "btn btn-default btn-sm" %>
+
+      
+  <div class="col-xs-4"><%= image_tag post.image.url(:thumb), class: 'img-thumbnail' if post.image? %> 
+  </div>
+
+                <%= post.content %> <br />
+                <div class="container">
+        <div align="right">
+                <br /> Автор: <%= post.user.email %> |
+              <time> <%= post.created_at.to_date.strftime("%d %B, %Y") %> </time>
+</div>
+</div>
+     
+     <div class="container">
+       <div class="row">
+  <div class="col-md-4"></div>
+  <div class="col-md-4">
+     <%= link_to ' Показать', post , class: "btn btn-default btn-sm" %>
         <%= link_to ' Редактировать', edit_post_path(post) , class: "btn btn-default btn-sm" %>
         <%= link_to ' Удалить', post, method: :delete, data: { confirm: 'Вы уверены?' } , class: "btn btn-default btn-sm"%> <br />
+  </div>
+       
+</div>
+      </div>
 
-        <div class="container">
-          <div align="">
-            <smail>
-                Автор: <%= post.user.email %> |
-              <time> <%= post.created_at.to_date.strftime("%d %B, %Y") %> </time>
-              <br />
-            </smail>
-          </div>
-        </div>
+    </tr>
 
-      </tr>
-        ___________________________________
-        <br />
-        <br />
-        <br />
+    
     <% end %>
   </tbody>
 </table>

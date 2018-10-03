@@ -20,7 +20,6 @@
       <div class="container">
         <div class="row">
           <div class="col-xs-12">
-            <!-- Brand and toggle get grouped for better mobile display -->
               <div class="navbar-header">
                 <a class="navbar-brand" href="/">Главная</a>
               </div>
@@ -29,7 +28,6 @@
                       <% if user_signed_in? %>
                         <li><%= link_to "Редактировать профиль", edit_user_registration_path %></li>
                         <li><%= link_to "Выйти", destroy_user_session_path, method: :delete %></li>
-                        
                       <% else %>
                         <li><%= link_to "Ввойти", new_user_session_path %></li>
                         <li><%= link_to "Регистрация", new_user_registration_path %></li>
@@ -42,12 +40,8 @@
     </nav>
 <!-- вирівнювання по центру -->
     <div class="container">
-      <div align="center">
-         <%= yield %>
-      </div>
-  
+      <%= yield %>
     </div>
-   
   </body>
 </html>
 
