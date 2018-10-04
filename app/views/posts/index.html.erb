@@ -1,46 +1,43 @@
-<p align="center">
-  <%= link_to 'Создать запись', new_post_path, class: "btn btn-default btn-lg btn-block" %> 
-  </p>
+<article class="post">
+  <section class="post-head">
 
+    <p align="center">
+      <%= link_to 'Создать запись', new_post_path, class: "btn btn-default btn-lg btn-block" %> 
+    </p>
+
+
+
+  </section>
     <% @posts.each do |post| %>
+      <section class="post-summary clearfix">
+            <tr>
+              <h4><b><%= post.title %></b> </h4>     
+                <div class="col-xs-4">
+                  <%= image_tag post.image.url(:thumb), class: 'img-thumbnail thumb' if post.image? %> 
+                </div>
+                  <%= post.content %> <br />
+                    <div class="container">
+                      <div align="right">
+                        <br /> Автор: <%= post.user.email %> |
+                          <time> <%= post.created_at.to_date.strftime("%d %B, %Y") %> </time>
+                      </div>
+                    </div>
+           
+                    <div class="container">
+                      <div class="row">
+                        <div class="col-md-4"></div>
+                          <div class="col-md-4">
+                            <%= link_to ' Показать', post , class: "btn btn-default btn-sm" %>
+                            <%= link_to ' Редактировать', edit_post_path(post) , class: "btn btn-default btn-sm" %>
+                          </div>
+             
+                      </div>
+                    </div>
+             </tr>
+      </section>
+      _
+      <% end %>
+      <%= will_paginate @posts %>
 
-<table>
-  <tbody>
-      <tr>
-    
-        <h4><b><%= post.title %></b> </h4>
-
-      
-   <%= image_tag post.image.url(:thumb), class: 'img-thumbnail thumb' if post.image? %>
- 
-
-                <%= post.content %> <br />
-                <div class="container">
-        <div align="right">
-                <br /> Автор: <%= post.user.email %> |
-              <time> <%= post.created_at.to_date.strftime("%d %B, %Y") %> </time>
-</div>
-</div>
-     
-     <div class="container">
-       <div class="row">
-  <div class="col-md-4"></div>
-  <div class="col-md-4">
-     <%= link_to ' Показать', post , class: "btn btn-default btn-sm" %>
-        <%= link_to ' Редактировать', edit_post_path(post) , class: "btn btn-default btn-sm" %>
-  </div>
-       
-</div>
-      </div>
-
-    </tr>
-
-    
-    <% end %>
-    <%= will_paginate @posts %>
-  </tbody>
-</table>
-
-<br>
 
 
