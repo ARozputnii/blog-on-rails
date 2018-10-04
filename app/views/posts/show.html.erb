@@ -1,19 +1,22 @@
 
 <article class="post">
 	<section class="post-head">
-		<h1> <%= @post.title %> </h1>
+		<div class="col-xs-2"></div>
+  		<div class="col-xs-10">
+				<h1> <%= @post.title %> </h1>
+			</div>
 		
 	</section>
-	<section>
-
-		<%= image_tag @post.image.url(:large), class: 'img-show' if @post.image? %> 
-		
+		<section>
+		 <div class="col-xs-1"></div>
+		  <div class="col-xs-11">
+				<%= image_tag @post.image.url(:large), class: 'img-show' if @post.image? %>
+			</div> 
 		<br />
 		<br />
-
 		<div class="container">
       <div align="justify">
-		 <%= @post.content %>
+		 		<%= @post.content %>
 			</div>
 		</div>
 		 <small>
@@ -27,17 +30,17 @@
 			<br />
 			<div class="container">
        <div class="row">
-  <div class="col-md-4"></div>
-  <div class="col-md-4">
-			<%= link_to 'Редактировать', edit_post_path(@post), class: "btn btn-default" %> 
+  			<div class="col-xs-4"></div>
+  				<div class="col-xs-8">
+						<%= link_to 'Редактировать', edit_post_path(@post), class: "btn btn-default" %> 
 			
-			<%= link_to ' Удалить', post_path(@post), method: :delete, data: { confirm: 'Вы уверены?' } , class: "btn btn-default"%>
+						<%= link_to ' Удалить', post_path(@post), method: :delete, data: { confirm: 'Вы уверены?' } , class: "btn btn-default"%>
 			
-			<%= link_to 'Назад', posts_path ,class: "btn btn-default"%>
-		</div>
-	</div>
-</div>
-
+						<%= link_to 'Назад', posts_path ,class: "btn btn-default"%>
+					</div>
+				</div>
+			</div>
 		</small>
 	</section>
 </article>
+<%= render 'disqus' %>
