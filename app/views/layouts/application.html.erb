@@ -16,28 +16,49 @@
   <body>
 
 
-    <nav class="navbar navbar-inverse" role="navigation" >
-      <div class="container">
-        <div class="row">
-          <div class="col-xs-12">
-              <div class="navbar-header">
-                <a class="navbar-brand" href="/">Главная</a>
-              </div>
-              
-              <ul class="nav navbar-nav navbar-right">
-                      <% if user_signed_in? %>
-                        <li><%= link_to "Профиль", edit_user_registration_path %></li>
-                        <li><%= link_to "Выйти", destroy_user_session_path, method: :delete %></li>
-                      <% else %>
-                        <li><%= link_to "Вход", new_user_session_path %></li>
-                        <li><%= link_to "Регистрация", new_user_registration_path %></li>
-                  <% end %>
-              </ul>
-            </div>
-         </div> 
-        </div>
-      </div>
-    </nav>
+    <!-- Классы navbar и navbar-default -->
+<nav class="navbar navbar-inverse" role="navigation" >
+  <!-- Контейнер -->
+  <div class="container-fluid">
+    <!-- Заголовок -->
+    <div class="navbar-header">
+      <!-- Кнопка «Гамбургер» -->
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-main" aria-expanded="false">
+        <span class=sr-only>Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <!-- Бренд или название сайта -->
+      <a class="navbar-brand" href="/">Notebook</a>
+    </div>
+    <!-- Основная часть меню -->
+    <div class="collapse navbar-collapse" id="navbar-main">
+    
+      <!-- Содержимое основной части -->
+      <ul class="nav navbar-nav">
+      
+        <li><a href="#">Записи</a></li>
+      </ul> 
+       <ul class="nav navbar-nav navbar-right">
+        <!-- Выпадающий список -->
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Профиль<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+          <% if user_signed_in? %>
+            <li><a href="#"><%= link_to "Редактировать профиль", edit_user_registration_path %></a></li>
+            <li><a href="#"><%= link_to "Выйти", destroy_user_session_path, method: :delete %></a></li>
+          <% else %>  
+            <li><a href="#"><%= link_to "Вход", new_user_session_path %></a></li>
+            <li><a href="#"><%= link_to "Регистрация", new_user_registration_path %></a></li>
+          <% end %>
+          </ul>
+        </li>
+      </ul>   
+    </div>
+  </div>
+</nav>
 <!-- вирівнювання по центру -->
     <div class="container">
       <%= yield %>
